@@ -24,7 +24,7 @@ pip3 install -e .
 
 Cf) 도커환경 구축 참고 사이트: https://mmaction2.readthedocs.io/en/latest/install.html#another-option-docker-image
 
-# 배포한 app test
+## 배포한 app test
 ```terminal
 FLASK_APP=app.py flask run
 ```
@@ -35,13 +35,13 @@ FLASK_APP=app.py flask run
 curl -X POST -H "Content-Type: multipart/form-data" http://localhost:5000/predict -F "file=@demo/demo.mp4;Type=video/mp4"
 ```
 
-# 데이터셋과 모델 변경
+## 데이터셋과 모델 변경
 - config_file, checkpoint_file, label에 해당하는 파일 다운받고 경로 지정
   + config_file은 configs/recognition/모델명 디렉토리에 다운
   + checkpoints 라는 디렉토리는 없으므로, 생성 후, 안에 다운받은 모델 weigh저장
   + label은 tools/data/데이터셋명 디렉토리에 존재. 맞춰서 경로 지정
 
-# 파일을 모델에 넘겨주는 법
+## 파일을 모델에 넘겨주는 법
 에러: ```RuntimeError: The type of argument video is not supported: <class'werkzeug.datastructures.FileStorage’>```
 
 api 코드가 파일 스토리지에서 넘겨주는 데이터를 받는 기능은 구현을 안 해 놓았기 때문이었다. 그래서 파일을 저장한 다음에, 그 경로를 넘겨주는 식으로 했다. 경로를 넘겨줘서 받는 기능은 구현돼 있었다.
